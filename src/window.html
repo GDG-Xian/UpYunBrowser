@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div id="browser">
+      <header>
+        <label>
+          <input type="radio" v-model="view" value="browser" name="view" />
+          浏览
+        </label>
+        <label>
+          <input type="radio" v-model="view" value="setting" name="view" />
+          设置
+        </label>
+      </header>
+      <section v-if="view == 'setting'">
+        <p>
+          <label>
+            Bucket:
+            <input type="text" v-model="config.bucket" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Operator:
+            <input type="text" v-model="config.operator" />
+          </label>
+        </p>
+        <p>
+          <label>
+            Password:
+            <input type="password" v-model="config.password" />
+          </label>
+        </p>
+      </section>
+
+      <section v-if="view == 'browser'">browser</section>
+    </div>
+    
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </body>
+</html>
+
