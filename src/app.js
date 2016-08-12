@@ -1,4 +1,5 @@
-new Vue({
+var storage = chrome.storage.local;
+var vm = new Vue({
   el: '#browser',
   data: {
     view: 'browser',
@@ -6,6 +7,17 @@ new Vue({
       bucket: '',
       operator: '',
       password: ''
+    }
+  },
+  created: function() {
+    storage.get('config', result => {
+      this.config = Object.assign({}, this.config, result.config);
+    });
+  },
+  watch: {
+    'config': {
+      handler: config => storage.set({ config: config }),
+      deep: true
     }
   }
 });
